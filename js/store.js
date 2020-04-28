@@ -80,33 +80,16 @@
 
 		callback = callback || function () {};
 
-		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
-
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
-
 		// If an ID was actually given, find the item and update each property
 		if (id) {
-			for (var i = 0; i < todos.length; i++) {
-				if (todos[i].id === id) {
-					for (var key in updateData) {
-						todos[i][key] = updateData[key];
-					}
-					break;
-				}
-			}
-
+			todos.find(todo => todo.id === id).completed = updateData.completed
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
 
-    		// Assign an ID
-			updateData.id = parseInt(newId);
+    		// Generate and Assign an ID
+			updateData.id = parseInt(Date.now());
     
-
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, [updateData]);
@@ -122,16 +105,9 @@
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-		var todoId;
-		
+	
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
-				todoId = todos[i].id;
-			}
-		}
-
-		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == todoId) {
 				todos.splice(i, 1);
 			}
 		}
