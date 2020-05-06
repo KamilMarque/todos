@@ -26,6 +26,7 @@
 		this.$main = qs('.main');
 		this.$footer = qs('.footer');
 		this.$toggleAll = qs('.toggle-all');
+		console.log(this.$toggleAll)
 		this.$newTodo = qs('.new-todo');
 	}
 
@@ -242,7 +243,6 @@
 			});
 
 		} else if (event === 'toggleAll') {
-			console.log(self.$toggleAll)
 			$on(self.$toggleAll, 'click', function () {
 				handler({completed: this.checked});
 			});

@@ -32,6 +32,7 @@
 	 * @param {boolean | undefined} useCapture captured element
  	 */
 	 window.$on = function (target, type, callback, useCapture) {
+		 console.log('lol', type , target)
 		target.addEventListener(type, callback, !!useCapture);
 	};
 

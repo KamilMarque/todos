@@ -210,6 +210,7 @@
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
 		self.model.update(id, { completed: completed }, function () {
+			console.log('test')
 			self.view.render('elementComplete', {
 				id: id,
 				completed: completed
@@ -229,6 +230,7 @@
 	 */
 	Controller.prototype.toggleAll = function (completed) {
 		var self = this;
+		console.log('voila')
 		self.model.read({ completed: !completed }, function (data) {
 			data.forEach(function (item) {
 				self.toggleComplete(item.id, completed, true);
