@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      Model - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      Braintree SDK Client Reference
+    </h3>
+
+    
+
+    <h3>Classes</h3><ul><li id="App-nav"><a href="App.html">App</a><ul class='methods'><li data-type="method" id="App-setView-nav"><a href="App.html#~setView">setView</a></li></ul></li><li id="Todo-nav"><a href="App-Todo.html">Todo</a></li><li id="Controller-nav"><a href="Controller.html">Controller</a><ul class='methods'><li data-type="method" id="Controller-_filter-nav"><a href="Controller.html#_filter">_filter</a></li><li data-type="method" id="Controller-_updateCount-nav"><a href="Controller.html#_updateCount">_updateCount</a></li><li data-type="method" id="Controller-_updateFilterState-nav"><a href="Controller.html#_updateFilterState">_updateFilterState</a></li><li data-type="method" id="Controller-addItem-nav"><a href="Controller.html#addItem">addItem</a></li><li data-type="method" id="Controller-editItem-nav"><a href="Controller.html#editItem">editItem</a></li><li data-type="method" id="Controller-editItemCancel-nav"><a href="Controller.html#editItemCancel">editItemCancel</a></li><li data-type="method" id="Controller-editItemSave-nav"><a href="Controller.html#editItemSave">editItemSave</a></li><li data-type="method" id="Controller-removeCompletedItems-nav"><a href="Controller.html#removeCompletedItems">removeCompletedItems</a></li><li data-type="method" id="Controller-removeItem-nav"><a href="Controller.html#removeItem">removeItem</a></li><li data-type="method" id="Controller-setView-nav"><a href="Controller.html#setView">setView</a></li><li data-type="method" id="Controller-showActive-nav"><a href="Controller.html#showActive">showActive</a></li><li data-type="method" id="Controller-showAll-nav"><a href="Controller.html#showAll">showAll</a></li><li data-type="method" id="Controller-showCompleted-nav"><a href="Controller.html#showCompleted">showCompleted</a></li><li data-type="method" id="Controller-toggleAll-nav"><a href="Controller.html#toggleAll">toggleAll</a></li><li data-type="method" id="Controller-toggleComplete-nav"><a href="Controller.html#toggleComplete">toggleComplete</a></li></ul></li><li id="Helper-nav"><a href="Helper.html">Helper</a><ul class='methods'><li data-type="method" id="Helper-$delegate-nav"><a href="Helper.html#.$delegate">$delegate</a></li><li data-type="method" id="Helper-$on-nav"><a href="Helper.html#.$on">$on</a></li><li data-type="method" id="Helper-$parent-nav"><a href="Helper.html#.$parent">$parent</a></li><li data-type="method" id="Helper-qs-nav"><a href="Helper.html#.qs">qs</a></li><li data-type="method" id="Helper-qsa-nav"><a href="Helper.html#.qsa">qsa</a></li></ul></li><li id="Model-nav"><a href="Model.html">Model</a><ul class='methods'><li data-type="method" id="Model-create-nav"><a href="Model.html#create">create</a></li><li data-type="method" id="Model-getCount-nav"><a href="Model.html#getCount">getCount</a></li><li data-type="method" id="Model-read-nav"><a href="Model.html#read">read</a></li><li data-type="method" id="Model-remove-nav"><a href="Model.html#remove">remove</a></li><li data-type="method" id="Model-removeAll-nav"><a href="Model.html#removeAll">removeAll</a></li><li data-type="method" id="Model-update-nav"><a href="Model.html#update">update</a></li></ul></li><li id="Store-nav"><a href="Store.html">Store</a><ul class='methods'><li data-type="method" id="Store-drop-nav"><a href="Store.html#drop">drop</a></li><li data-type="method" id="Store-find-nav"><a href="Store.html#find">find</a></li><li data-type="method" id="Store-findAll-nav"><a href="Store.html#findAll">findAll</a></li><li data-type="method" id="Store-remove-nav"><a href="Store.html#remove">remove</a></li><li data-type="method" id="Store-save-nav"><a href="Store.html#save">save</a></li></ul></li><li id="Template-nav"><a href="Template.html">Template</a><ul class='methods'><li data-type="method" id="Template-clearCompletedButton-nav"><a href="Template.html#clearCompletedButton">clearCompletedButton</a></li><li data-type="method" id="Template-itemCounter-nav"><a href="Template.html#itemCounter">itemCounter</a></li><li data-type="method" id="Template-show-nav"><a href="Template.html#show">show</a></li></ul></li><li id="View-nav"><a href="View.html">View</a><ul class='methods'><li data-type="method" id="View-_bindItemEditCancel-nav"><a href="View.html#_bindItemEditCancel">_bindItemEditCancel</a></li><li data-type="method" id="View-_bindItemEditDone-nav"><a href="View.html#_bindItemEditDone">_bindItemEditDone</a></li><li data-type="method" id="View-_clearCompletedButton-nav"><a href="View.html#_clearCompletedButton">_clearCompletedButton</a></li><li data-type="method" id="View-_editItem-nav"><a href="View.html#_editItem">_editItem</a></li><li data-type="method" id="View-_editItemDone-nav"><a href="View.html#_editItemDone">_editItemDone</a></li><li data-type="method" id="View-_elementComplete-nav"><a href="View.html#_elementComplete">_elementComplete</a></li><li data-type="method" id="View-_itemId-nav"><a href="View.html#_itemId">_itemId</a></li><li data-type="method" id="View-_removeItem-nav"><a href="View.html#_removeItem">_removeItem</a></li><li data-type="method" id="View-_setFilter-nav"><a href="View.html#_setFilter">_setFilter</a></li><li data-type="method" id="View-bind-nav"><a href="View.html#bind">bind</a></li><li data-type="method" id="View-render-nav"><a href="View.html#render">render</a></li></ul></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        Model
+      </h1>
+    
+
+    
+
+<section>
+  <header>
+    
+      <h2>
+        
+        Model
+        
+      </h2>
+
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#Model">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="Model">
+      <span class="type-signature"></span>new Model<span class="signature">(storage)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Creates a new Model instance and hooks up the storage.
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>storage</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          A reference to the client side storage class
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line10">line 10</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+      <h3 class="subsection-title">Methods</h3>
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#create">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="create">
+      <span class="type-signature"></span>create<span class="signature">(title<span class="signature-attributes">opt</span>, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Creates a new todo model
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>title</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          The title of the task
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          The callback to fire after the model is created
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line20">line 20</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#getCount">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="getCount">
+      <span class="type-signature"></span>getCount<span class="signature">(callback)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Returns a count of all todos
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The callback to put informations in the DOM
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line98">line 98</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#read">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="read">
+      <span class="type-signature"></span>read<span class="signature">(query<span class="signature-attributes">opt</span>, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Finds and returns a model in storage. If no query is given it'll simply
+return everything. If you pass in a string or number it'll look that up as
+the ID of the model to find. Lastly, you can pass it an object to match
+against.
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>query</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    |
+
+    <span class="param-type">
+      number
+    </span>
+
+    |
+
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          A query to match models against
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          The callback to fire after the model is found
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line47">line 47</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#read-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="read-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>model.read(1, func); // Will find the model with an ID of 1
+model.read('1'); // Same as above
+//Below will find a model with foo equalling bar and hello equalling world.
+model.read({ foo: 'bar', hello: 'world' });</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#remove">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="remove">
+      <span class="type-signature"></span>remove<span class="signature">(id, callback)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Removes a model from storage
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The ID of the model to remove
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The callback to fire when the removal is complete.
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line80">line 80</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#removeAll">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="removeAll">
+      <span class="type-signature"></span>removeAll<span class="signature">(callback)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    WARNING: Will remove ALL data from storage.
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The callback to fire when the storage is wiped.
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line89">line 89</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#update">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="update">
+      <span class="type-signature"></span>update<span class="signature">(id, data, callback)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Updates a model by giving it an ID, data to update, and a callback to fire when
+the update is complete.
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The id of the model to update
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>data</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The properties to update and their new value
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The callback to fire when the update is complete.
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="model.js.html">model.js</a>, <a href="model.js.html#line70">line 70</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+
+    
+
+    
+  </article>
+</section>
+
+
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>

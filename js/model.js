@@ -92,6 +92,8 @@
 
 	/**
 	 * Returns a count of all todos
+	 * 
+	 * @param {Function} callback The callback to put informations in the DOM
 	 */
 	Model.prototype.getCount = function (callback) {
 		var todos = {

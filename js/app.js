@@ -4,6 +4,8 @@
 
 	/**
 	 * Sets up a brand new Todo list.
+	 * 
+	 * @constructor
 	 *
 	 * @param {string} name The name of your new to do list.
 	 */
@@ -15,8 +17,15 @@
 		this.controller = new app.Controller(this.model, this.view);
 	}
 
+	/**
+	 * Create new Todo list
+	 */
 	var todo = new Todo('todos-vanillajs');
 
+
+	/**
+	 * Add the hash in the url
+	 */
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}

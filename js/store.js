@@ -9,6 +9,8 @@
 	 * @param {string} name The name of our DB we want to use
 	 * @param {function} callback Our fake DB uses callbacks because in
 	 * real life you probably would be making AJAX calls
+	 * 
+	 * @constructor
 	 */
 	function Store(name, callback) {
 		callback = callback || function () {};
@@ -65,7 +67,6 @@
 		callback = callback || function () {};
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
 	};
-
 	/**
 	 * Will save the given data to the DB. If no item exists it will create a new
 	 * item, otherwise it'll simply update an existing item's properties
@@ -82,7 +83,14 @@
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
-			todos.find(todo => todo.id === id).completed = updateData.completed
+			for (var i = 0; i < todos.length; i++) {
+				if (todos[i].id === id) {
+				  for (var key in updateData) {
+					todos[i][key] = updateData[key];
+				  }
+				  break;
+				}
+		  	}
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {

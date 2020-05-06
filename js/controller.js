@@ -49,7 +49,7 @@
 	/**
 	 * Loads and initialises the view
 	 *
-	 * @param {string} '' | 'active' | 'completed'
+	 * @param {string} locationHash '' | 'active' | 'completed'
 	 */
 	Controller.prototype.setView = function (locationHash) {
 		var route = locationHash.split('/')[1];
@@ -91,6 +91,8 @@
 	/**
 	 * An event to fire whenever you want to add an item. Simply pass in the event
 	 * object and it'll handle the DOM insertion and saving of the new item.
+	 * 
+	 * @param {string} title name of the new item
 	 */
 	Controller.prototype.addItem = function (title) {
 		var self = this;
@@ -105,8 +107,10 @@
 		});
 	};
 
-	/*
+	/** 
 	 * Triggers the item editing mode.
+	 * 
+	 * @param {number} id the id of the item
 	 */
 	Controller.prototype.editItem = function (id) {
 		var self = this;
@@ -115,11 +119,14 @@
 		});
 	};
 
-	/*
+	/**
 	 * Finishes the item editing mode successfully.
+	 * @param {number} id id of the item todo
+	 * @param {string} title name of modified item
 	 */
 	Controller.prototype.editItemSave = function (id, title) {
 		var self = this;
+		console.log('title', title);
 
 		while (title[0] === " ") {
 			title = title.slice(1);
@@ -138,10 +145,12 @@
 		}
 	};
 
-	/*
+	/**
 	 * Cancels the item editing mode.
+	 * @param {number} id id of the item
 	 */
 	Controller.prototype.editItemCancel = function (id) {
+		console.log(typeof(id))
 		var self = this;
 		self.model.read(id, function (data) {
 			self.view.render('editItemDone', {id: id, title: data[0].title});
@@ -215,6 +224,8 @@
 	/**
 	 * Will toggle ALL checkboxes' on/off state and completeness of models.
 	 * Just pass in the event object.
+	 * @param {object} checkbox The checkbox to check the state of complete
+	 *                          or not
 	 */
 	Controller.prototype.toggleAll = function (completed) {
 		var self = this;
@@ -250,7 +261,7 @@
 	 * @param {boolean|undefined} force  forces a re-painting of todo items.
 	 */
 	Controller.prototype._filter = function (force) {
-		var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
+		var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substring(1);
 
 		// Update the elements on the page, which change with each completed todo
 		this._updateCount();
@@ -267,15 +278,13 @@
 
 	/**
 	 * Simply updates the filter nav's selected states
+	 * 
+	 * @param {string} currentPage name of active hash
 	 */
 	Controller.prototype._updateFilterState = function (currentPage) {
 		// Store a reference to the active route, allowing us to re-filter todo
 		// items as they are marked complete or incomplete.
-		this._activeRoute = currentPage;
-
-		if (currentPage === '') {
-			this._activeRoute = 'All';
-		}
+		this._activeRoute = currentPage ? currentPage : 'All'
 
 		this._filter();
 
