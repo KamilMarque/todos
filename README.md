@@ -12,7 +12,79 @@ Regardez comment il est structuré et essayez de comprendre comment il fonctionn
 Il y a deux bugs dans le code et c'est votre mission de les trouver ! Voici quelques indices:
 
 Le premier est une faute de frappe.
+
+	Controller.prototype.adddItem = function (title) {...};
+
+	Controller.prototype.addItem = function (title) {...};
+
 Le deuxième introduit un conflit éventuel entre deux IDs identiques.
+
+	Store.prototype.save = function (updateData, callback, id) {
+		var data = JSON.parse(localStorage[this._dbName]);
+		var todos = data.todos;
+
+		callback = callback || function () {};
+
+		// Generate an ID
+	    var newId = ""; 
+	    var charset = "0123456789";
+
+        for (var i = 0; i < 6; i++) {
+     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		}
+
+		// If an ID was actually given, find the item and update each property
+		if (id) {
+			for (var i = 0; i < todos.length; i++) {
+				if (todos[i].id === id) {
+					for (var key in updateData) {
+						todos[i][key] = updateData[key];
+					}
+					break;
+				}
+			}
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, todos);
+		} else {
+
+    		// Assign an ID
+			updateData.id = parseInt(newId);
+			todos.push(updateData);
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, [updateData]);
+		}
+	};
+
+
+	Store.prototype.save = function (updateData, callback, id) {
+		var data = JSON.parse(localStorage[this._dbName]);
+		var todos = data.todos;
+
+		callback = callback || function () {};
+
+		// If an ID was actually given, find the item and update each property
+		if (id) {
+			for (var i = 0; i < todos.length; i++) {
+				if (todos[i].id === id) {
+				  for (var key in updateData) {
+					todos[i][key] = updateData[key];
+				  }
+				  break;
+				}
+		  	}
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, todos);
+		} else {
+
+    		// Generate and Assign an ID
+		updateData.id = parseInt(Date.now());
+    
+		todos.push(updateData);
+		localStorage[this._dbName] = JSON.stringify(data);
+		callback.call(this, [updateData]);
+		}
+	};
+
 Vous allez chercher ces bugs dans le code, un peu comme dans "Où est Charlie". Une fois les bugs trouvés, corrigez-les ! Ils empêchent le code de marcher correctement (pour l'instant ce n'est même pas possible d'ajouter des tâches à la liste à cause de ces bugs).
 
 Il y a également des améliorations à faire, même s'il ne s'agit pas de bugs proprement dit. Essayez de trouver où vous pouvez optimiser des boucles et vérifiez s'il y a des fonctions qui affichent des informations dans la console de déboggage  qui ne sont pas nécessaires.
@@ -27,6 +99,127 @@ Il y a déjà un fichier existant pour les tests de ce projet :  ControllerSpec.
 			// TODO: write test
 
 Plus précisément, vous pouvez les trouver sur les lignes #62, #86, #90, #137, #141, #146, #150, #156, et #196 de  ControllerSpec.js .
+
+		it('should show entries on start-up', function () {
+		// TODO: write test
+		// new todos list
+		var todos = {};
+		// update the model
+		setUpModel([todos]);
+		// update the view to default (all)
+		subject.setView('');
+		// set view with all todos
+		expect(view.render).toHaveBeenCalledWith('showEntries', [todos]);
+		});
+
+		it('should show active entries', function () {
+		// TODO: write test
+		// new todos list
+		var todos = {title: 'my todo', completed: false};
+		// update the model
+		setUpModel([todos]);
+		// update the view to Active
+		subject.setView('#/Active');
+		// find active todo
+		expect(model.read).toHaveBeenCalledWith({completed: false}, jasmine.any(Function));
+		// set view with active todo
+		expect(view.render).toHaveBeenCalledWith('showEntries', [todos]);
+		});
+
+		it('should show completed entries', function () {
+		// TODO: write test
+		// new todos list
+		var todos = {title: 'my todo', completed: true};
+		// update the model
+		setUpModel([todos]);
+		// update the view to Completed
+		subject.setView('#/Completed');
+		// find completed todo
+		expect(model.read).toHaveBeenCalledWith({completed: true}, jasmine.any(Function));
+		// set view with completed todo
+		expect(view.render).toHaveBeenCalledWith('showEntries', [todos]);
+		});
+
+		it('should highlight "All" filter by default', function () {
+		// TODO: write test
+		// new todos list
+		var todos = {};
+		// update the model
+		setUpModel([todos]);
+		// update the view to default (all)
+		subject.setView('');
+		// set setFilter to default (all)
+		expect(view.render).toHaveBeenCalledWith('setFilter', '');
+		});
+
+		it('should highlight "Active" filter when switching to active view', function () {
+		// TODO: write test
+		// new todos list
+		var todos = {}
+		// update the model
+		setUpModel([todos]);
+		// update the view to Active
+		subject.setView('#/Active');
+		// set setFilter to Active
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'Active');
+		});
+
+		it('should toggle all todos to completed', function () {
+		// TODO: write test
+		// new todos list
+		var todos = [{id: 42, title: 'my todo', completed: false},
+					{id: 43, title: 'new one', completed: false},
+					{id: 44, title: 'again', completed: false}];
+		// update the model
+		setUpModel(todos);
+		// update the view to default
+		subject.setView('');
+		// trigger togleAll button
+		view.trigger('toggleAll', {completed: true});
+		// update the model with all completed todo
+		expect(model.update).toHaveBeenCalledWith(42, {completed: true}, jasmine.any(Function));
+		expect(model.update).toHaveBeenCalledWith(43, {completed: true}, jasmine.any(Function));
+		expect(model.update).toHaveBeenCalledWith(44, {completed: true}, jasmine.any(Function));
+		});
+
+		it('should update the view', function () {
+		// new todos list
+		var todos = [{id: 42, title: 'my todo', completed: false},
+					{id: 43, title: 'new one', completed: false},
+					{id: 44, title: 'again', completed: false}];
+		// update the model
+		setUpModel(todos);
+		// update the view to default
+		subject.setView('');
+		// trigger togleAll button
+		view.trigger('toggleAll', {completed: true});
+		// update the view with all completed todo
+		expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 42, completed: true});
+		expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 43, completed: true});
+		expect(view.render).toHaveBeenCalledWith('elementComplete', {id: 44, completed: true});
+		});
+
+		it('should add a new todo to the model', function () {
+		// TODO: write test
+		var todos = {};
+		// update the model
+		setUpModel([todos]);
+		// update the view to default
+		subject.setView('');
+		// trigger newTodo
+		view.trigger('newTodo', 'my new todo')
+		expect(model.create).toHaveBeenCalledWith('my new todo', jasmine.any(Function));
+		});
+
+		it('should remove an entry from the model', function () {
+		// TODO: write test
+		var todos = {id: 42, title: 'my todo', completed: true};
+		setUpModel([todos]);
+
+		subject.setView('');
+		view.trigger('itemRemove', {id: 42})
+		expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function));
+		});
 
 Vous pouvez aller plus loin et ajouter des tests supplémentaires si vous le voulez !
 
