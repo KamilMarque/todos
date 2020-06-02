@@ -42,10 +42,12 @@ Maintenant, vous allez faire un audit de performance. En vous appuyant sur les d
 ## Etape 4 : améliorez le projet
 Maintenant que vous connaissez ce code par cœur, vous pouvez facilement ajouter des informations supplémentaires à votre documentation. Vous êtes désormais prêt à écrire de la documentation technique ! 
 
-[Documentation technique](https://kamilmarque.github.io/todos/)
-
 Pour le dire plus simplement, il faut documenter les éléments suivants :
 
 		le projet lui-même (l'usage non technique)
 		comment il fonctionne techniquement
 		votre audit
+
+[Audits] (https://github.com/KamilMarque/todos/blob/master/docs/audit.pdf)
+[Guide d'utilisation] (https://github.com/KamilMarque/todos/blob/master/docs/guilde_utilisation.pdf)
+[Documentation technique](https://kamilmarque.github.io/todos/)
