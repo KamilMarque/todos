@@ -13,78 +13,7 @@ Il y a deux bugs dans le code et c'est votre mission de les trouver ! Voici quel
 
 Le premier est une faute de frappe.
 
-	Controller.prototype.adddItem = function (title) {...};
-
-	Controller.prototype.addItem = function (title) {...};
-
 Le deuxième introduit un conflit éventuel entre deux IDs identiques.
-
-	Store.prototype.save = function (updateData, callback, id) {
-		var data = JSON.parse(localStorage[this._dbName]);
-		var todos = data.todos;
-
-		callback = callback || function () {};
-
-		// Generate an ID
-	    	var newId = ""; 
-	    	var charset = "0123456789";
-
-        	for (var i = 0; i < 6; i++) {
-     			newId += charset.charAt(Math.floor(Math.random() * charset.length));
-			}
-
-		// If an ID was actually given, find the item and update each property
-		if (id) {
-			for (var i = 0; i < todos.length; i++) {
-				if (todos[i].id === id) {
-					for (var key in updateData) {
-						todos[i][key] = updateData[key];
-					}
-					break;
-				}
-			}
-			localStorage[this._dbName] = JSON.stringify(data);
-			callback.call(this, todos);
-		} else {
-
-    		// Assign an ID
-		updateData.id = parseInt(newId);
-		todos.push(updateData);
-		localStorage[this._dbName] = JSON.stringify(data);
-		callback.call(this, [updateData]);
-		}
-	};
-
-Correction =>
-
-	Store.prototype.save = function (updateData, callback, id) {
-		var data = JSON.parse(localStorage[this._dbName]);
-		var todos = data.todos;
-
-		callback = callback || function () {};
-
-		// If an ID was actually given, find the item and update each property
-		if (id) {
-			for (var i = 0; i < todos.length; i++) {
-				if (todos[i].id === id) {
-				  for (var key in updateData) {
-					todos[i][key] = updateData[key];
-				  }
-				  break;
-				}
-		  	}
-			localStorage[this._dbName] = JSON.stringify(data);
-			callback.call(this, todos);
-		} else {
-
-    		// Generate and Assign an ID
-		updateData.id = parseInt(Date.now());
-    
-		todos.push(updateData);
-		localStorage[this._dbName] = JSON.stringify(data);
-		callback.call(this, [updateData]);
-		}
-	};
 
 Vous allez chercher ces bugs dans le code, un peu comme dans "Où est Charlie". Une fois les bugs trouvés, corrigez-les ! Ils empêchent le code de marcher correctement (pour l'instant ce n'est même pas possible d'ajouter des tâches à la liste à cause de ces bugs).
 
