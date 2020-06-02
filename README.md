@@ -48,6 +48,8 @@ Pour le dire plus simplement, il faut documenter les éléments suivants :
 		comment il fonctionne techniquement
 		votre audit
 
+## Livrables
+
 [Audits](https://github.com/KamilMarque/todos/blob/master/docs/audit.pdf)  
 [Guide d'utilisation](https://github.com/KamilMarque/todos/blob/master/docs/guilde_utilisation.pdf)  
 [Documentation technique](https://kamilmarque.github.io/todos/)
