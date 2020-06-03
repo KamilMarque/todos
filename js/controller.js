@@ -126,7 +126,6 @@
 	 */
 	Controller.prototype.editItemSave = function (id, title) {
 		var self = this;
-		console.log('title', title);
 
 		while (title[0] === " ") {
 			title = title.slice(1);
@@ -150,7 +149,6 @@
 	 * @param {number} id id of the item
 	 */
 	Controller.prototype.editItemCancel = function (id) {
-		console.log(typeof(id))
 		var self = this;
 		self.model.read(id, function (data) {
 			self.view.render('editItemDone', {id: id, title: data[0].title});
@@ -169,12 +167,6 @@
 		var items;
 		self.model.read(function(data) {
 			items = data;
-		});
-
-		items.forEach(function(item) {
-			if (item.id === id) {
-				console.log("Element with ID: " + id + " has been removed.");
-			}
 		});
 
 		self.model.remove(id, function () {
@@ -210,7 +202,6 @@
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
 		self.model.update(id, { completed: completed }, function () {
-			console.log('test')
 			self.view.render('elementComplete', {
 				id: id,
 				completed: completed
@@ -230,7 +221,6 @@
 	 */
 	Controller.prototype.toggleAll = function (completed) {
 		var self = this;
-		console.log('voila')
 		self.model.read({ completed: !completed }, function (data) {
 			data.forEach(function (item) {
 				self.toggleComplete(item.id, completed, true);

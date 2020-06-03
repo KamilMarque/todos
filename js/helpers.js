@@ -18,8 +18,6 @@
 	 * @param {object | undefined} scope scope of selected element in the DOM
 	 */
 	window.qsa = function (selector, scope) {
-		//console.log('fd', typeof(scope), scope)
-
 		return (scope || document).querySelectorAll(selector);
 	};
 
@@ -32,7 +30,6 @@
 	 * @param {boolean | undefined} useCapture captured element
  	 */
 	 window.$on = function (target, type, callback, useCapture) {
-		 console.log('lol', type , target)
 		target.addEventListener(type, callback, !!useCapture);
 	};
 
